@@ -3,14 +3,14 @@ package com.example.travel_tours.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDTO {
+@Component
+public class AuthDTO {
     private String email;
-    private String password;
-    private String name;
-    private String role;
+    private String token;
 }

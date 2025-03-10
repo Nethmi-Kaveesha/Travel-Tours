@@ -1,41 +1,40 @@
 package com.example.travel_tours.entity;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TourGuides")
+@Table(name = "tour_guides")  // Table name in lowercase with an underscore
 public class TourGuide {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GuideID")
+    //@Column(name = "GuideID")
     private int guideID;
 
-    @Column(name = "FullName", nullable = false, length = 255)
+    //@Column(name = "FullName", nullable = false, length = 255)
     private String fullName;
 
-    @Column(name = "Email", nullable = false, unique = true, length = 255)
+    //@Column(name = "Email", nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column(name = "PhoneNumber", length = 20)
+
+    //@Column(name = "PhoneNumber", length = 20)
     private String phoneNumber;
 
-    @Column(name = "Experience", length = 255)
+    //@Column(name = "Experience", length = 255)
     private String experience;
 
-    @Column(name = "LanguagesSpoken", columnDefinition = "TEXT")
+    //@Column(name = "LanguagesSpoken", columnDefinition = "TEXT")  // Uncommented and fixed column name
     private String languagesSpoken;
 
-    @Column(name = "CreatedAt", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    //@Column(name = "CreatedAt", updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  // Uncommented and fixed column definition
+    private LocalDateTime createdAt;
 
-    // Constructors
+    // Default constructor
     public TourGuide() {
     }
 
-    // Getters and setters
+    // Getters and Setters
     public int getGuideID() {
         return guideID;
     }
@@ -84,11 +83,32 @@ public class TourGuide {
         this.languagesSpoken = languagesSpoken;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    // Optional: You can use a @PrePersist to set 'createdAt' automatically if it's not handled by the database default
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "TourGuide{" +
+                "guideID=" + guideID +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", experience='" + experience + '\'' +
+                ", languagesSpoken='" + languagesSpoken + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

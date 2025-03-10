@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tour Guide Form</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Tour Guide Form</h2>
+        <div class="d-flex justify-content-between mb-4">
+            <a href="itemForm.html"><button class="btn btn-secondary">Item</button></a>
+            <a href="OrderForm.html"><button class="btn btn-secondary">Order</button></a>
+        </div>
+        <form id="tourGuideForm">
+            <!-- Guide ID Input (manual entry) -->
+            <div class="mb-3">
+                <label for="guideId" class="form-label">Guide ID:</label>
+                <input type="text" class="form-control" id="guideId" name="guideID" placeholder="Enter Guide ID" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name:</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter full name" required>
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number:</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" pattern="^\+?[1-9]\d{1,14}$" required>
+                <small class="form-text text-muted">Enter a valid phone number (e.g., +1234567890)</small>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                <small class="form-text text-muted">Enter a valid email address (e.g., example@example.com)</small>
+            </div>
+            <div class="mb-3">
+                <label for="experience" class="form-label">Experience:</label>
+                <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience" required>
+            </div>
+            <div class="mb-3">
+                <label for="languagesSpoken" class="form-label">Languages Spoken:</label>
+                <input type="text" class="form-control" id="languagesSpoken" name="languagesSpoken" placeholder="Enter languages spoken" required>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
+                <button type="button" class="btn btn-warning" id="updateButton" style="display: none;" onclick="updateTourGuide()">Update</button>
+                <button type="button" class="btn btn-danger" id="deleteButton" style="display: none;" onclick="deleteTourGuide()">Delete</button>
+            </div>
+        </form>
+
+        <table class="table table-striped table-hover mt-5">
+            <thead>
+            <tr>
+                <th>Guide ID</th>
+                <th>Full Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Experience</th>
+                <th>Languages Spoken</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="tourGuideTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/tour-guide-script.js"></script>
+</body>
+</html>

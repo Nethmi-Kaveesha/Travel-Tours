@@ -1,21 +1,22 @@
 package com.example.travel_tours.dto;
 
-public class TourGuideDTO {
+import java.time.LocalDateTime;
 
+public class TourGuideDTO {
     private int guideID;
     private String fullName;
     private String email;
     private String phoneNumber;
     private String experience;
     private String languagesSpoken;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     // Default Constructor
     public TourGuideDTO() {
     }
 
     // Constructor with parameters
-    public TourGuideDTO(int guideID, String fullName, String email, String phoneNumber, String experience, String languagesSpoken, String createdAt) {
+    public TourGuideDTO(int guideID, String fullName, String email, String phoneNumber, String experience, String languagesSpoken, LocalDateTime createdAt) {
         this.guideID = guideID;
         this.fullName = fullName;
         this.email = email;
@@ -74,11 +75,24 @@ public class TourGuideDTO {
         this.languagesSpoken = languagesSpoken;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "TourGuideDTO{" +
+                "guideID=" + guideID +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", experience='" + experience + '\'' +
+                ", languagesSpoken='" + languagesSpoken + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
